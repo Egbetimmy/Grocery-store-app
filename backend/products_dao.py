@@ -1,8 +1,11 @@
 from sql_connection import get_sql_connection
 
+
 def get_all_products(connection):
     cursor = connection.cursor()
-    query = ("select products.product_id, products.name, products.uom_id, products.price_per_unit, uom.uom_name from products inner join uom on products.uom_id=uom.uom_id")
+    query = (
+        "select products.product_id, products.name, products.uom_id, "
+        "products.price_per_unit, uom.uom_name from products inner join uom on products.uom_id=uom.uom_id")
     cursor.execute(query)
     response = []
     for (product_id, name, uom_id, price_per_unit, uom_name) in cursor:
@@ -14,6 +17,7 @@ def get_all_products(connection):
             'uom_name': uom_name
         })
     return response
+
 
 def insert_new_product(connection, product):
     cursor = connection.cursor()
@@ -27,6 +31,7 @@ def insert_new_product(connection, product):
 
     return cursor.lastrowid
 
+
 def delete_product(connection, product_id):
     cursor = connection.cursor()
     query = ("DELETE FROM products where product_id=" + str(product_id))
@@ -34,6 +39,7 @@ def delete_product(connection, product_id):
     connection.commit()
 
     return cursor.lastrowid
+
 
 if __name__ == '__main__':
     connection = get_sql_connection()
