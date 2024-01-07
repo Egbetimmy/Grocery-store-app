@@ -118,4 +118,3 @@ Provide instructions or links to guide on how to deploy the frontend to a produc
 https://grocery-store-app-git-main-egbetimmy.vercel.app/manage-product.html
 improve the readme
 
-
